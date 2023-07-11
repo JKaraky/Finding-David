@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,10 +45,10 @@ public class PlayerControls : MonoBehaviour
             xMovement = Input.GetAxisRaw("Horizontal");
 
             playerRb.AddForce(new Vector2(xMovement, -1) * jumpForce, ForceMode2D.Impulse);
-            Debug.Log("I was pressed");
         }
     }
 
+    // To check if the player is on the ground so he can jump again
     bool isGrounded()
     {
         float extraHeight = 0.2f;
