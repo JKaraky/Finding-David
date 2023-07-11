@@ -6,7 +6,6 @@ public class PlayerGeneral : MonoBehaviour
 {
     public GameObject head;
     CircleCollider2D headCollider;
-    public GameObject gameOver;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,8 +22,7 @@ public class PlayerGeneral : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Noose"))
         {
-            Time.timeScale = 0;
-            gameOver.SetActive(true);
+            GameManager.gameManagerInstance.EndGame();
         }
     }
 }
