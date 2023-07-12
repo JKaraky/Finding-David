@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class AlcoholControls : MonoBehaviour
 {
     #region Variables
     [Header("Movement and Jump")]
@@ -40,7 +39,7 @@ public class PlayerControls : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             xMovement = Input.GetAxisRaw("Horizontal");
 
