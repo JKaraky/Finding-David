@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 163879276}
   - component: {fileID: 163879275}
   - component: {fileID: 163879277}
+  - component: {fileID: 163879278}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -223,7 +224,22 @@ MonoBehaviour:
   start: {x: 7, y: 0, z: 0}
   end: {x: -7, y: 0, z: 0}
   duration: 5
-  centerOffset: 2
+--- !u!114 &163879278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163879274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a036cfa4e57c1fa41a56519567bee89d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 3
+  rotation: 1
+  altRotation: 1
+  rotInterval: 2
 --- !u!1 &1344068813
 GameObject:
   m_ObjectHideFlags: 0
