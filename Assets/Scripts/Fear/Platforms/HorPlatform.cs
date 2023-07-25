@@ -8,38 +8,42 @@ public class HorPlatform : MonoBehaviour
     [SerializeField] Vector2 positionOne;
     [SerializeField] Vector2 positionTwo;
 
-    float timeElapsed;
-
-    int direction = 1;
+    float timeElapsed=0;
 
     // Update is called once per frame
     void Update()
     {
         if (timeElapsed < duration)
         {
-            Vector2 target = currentMovementTarget();
-
-            transform.position = Vector2.Lerp(target * -1, target, timeElapsed/duration);
+            transform.position = Vector2.Lerp(positionOne, positionTwo, timeElapsed / duration);
 
             timeElapsed += Time.deltaTime;
         }
         else
         {
+            FlipPositions();
             timeElapsed = 0;
-
-            direction *= -1;
         }
     }
 
-    Vector2 currentMovementTarget()
+    void FlipPositions()
     {
-        if(direction == 1)
+        Vector2 temp = positionOne;
+        positionOne = positionTwo;
+        positionTwo = temp;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
         {
-            return positionOne;
+            collision.collider.transform.parent = this.transform;
         }
-        else
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
         {
-            return positionTwo;
+            collision.collider.transform.parent = null;
         }
     }
 }
