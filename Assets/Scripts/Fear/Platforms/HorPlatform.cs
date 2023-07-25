@@ -22,8 +22,6 @@ public class HorPlatform : MonoBehaviour
             transform.position = Vector2.Lerp(target * -1, target, timeElapsed/duration);
 
             timeElapsed += Time.deltaTime;
-
-            Debug.Log(Vector2.Lerp(transform.position, target, timeElapsed / duration));
         }
         else
         {

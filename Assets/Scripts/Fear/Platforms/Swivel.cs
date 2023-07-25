@@ -1,47 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Swivel : MonoBehaviour
 {
-    [SerializeField] float duration;
-    [SerializeField] Vector3 positionOne;
-    [SerializeField] Vector3 positionTwo;
 
+    public Vector3 start;
+    public Vector3 end;
+    public float duration;
+
+    float centerOffset = 0.1f;
     float timeElapsed;
+    bool reverse = false;
 
-    int direction = 1;
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        var centerPivot = (start + end) * 0.5f;
+        centerPivot -= new Vector3(0, centerOffset);
+
+        var startRelPosition = start - centerPivot;
+        var endRelPosition = end - centerPivot;
+
         if (timeElapsed < duration)
         {
-            Vector2 target = currentMovementTarget();
+            if(!reverse)
+            {
+                transform.position = Vector3.Slerp(startRelPosition, endRelPosition, timeElapsed / duration);
 
-            transform.position = Vector3.Slerp(target * -1, target, timeElapsed/duration);
+                timeElapsed += Time.deltaTime;
+            }
+            else
+            {
+                transform.position = Vector3.Slerp(endRelPosition, startRelPosition, timeElapsed / duration);
 
-            timeElapsed += Time.deltaTime;
+                timeElapsed += Time.deltaTime;
+            }
 
-            Debug.Log(Vector3.Slerp(transform.position, target, timeElapsed / duration));
         }
         else
         {
             timeElapsed = 0;
 
-            direction *= -1;
-        }
-    }
-
-    Vector2 currentMovementTarget()
-    {
-        if(direction == 1)
-        {
-            return positionOne;
-        }
-        else
-        {
-            return positionTwo;
+            reverse = !reverse;
         }
     }
 }
