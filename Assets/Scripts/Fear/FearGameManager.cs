@@ -17,8 +17,7 @@ public class FearGameManager : MonoBehaviour
     {
         if(entityScript.timeUntilDeath < entityScript.elapsedTime)
         {
-            Time.timeScale = 0;
-            gameOver.SetActive(true);
+            GameManager.gameManagerInstance.EndGame();
         }
     }
 }

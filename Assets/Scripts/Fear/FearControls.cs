@@ -94,4 +94,13 @@ public class FearControls : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boundary"))
+        {
+            // Game Over
+            GameManager.gameManagerInstance.EndGame();
+        }
+    }
 }
