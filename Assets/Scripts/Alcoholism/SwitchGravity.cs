@@ -15,7 +15,7 @@ public class SwitchGravity : MonoBehaviour
 
      void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             rb.gravityScale *= -1;
             Rotation();
