@@ -11,7 +11,6 @@ public class EntityTimer : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        Debug.Log(entity.activeSelf);
         if (!entity.activeSelf && !timeDetermined)
         {
             StartCoroutine(SpawnEntity());

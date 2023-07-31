@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class FearControls : MonoBehaviour
     [Header("Ray")]
     public LayerMask entityMask;
     [SerializeField] GameObject entity;
+
+    public static event Action EntityIsHit;
     #endregion
     void Awake()
     {
@@ -90,6 +93,7 @@ public class FearControls : MonoBehaviour
             if(hit.collider != null)
             {
                 entity.SetActive(false);
+                EntityIsHit?.Invoke();
             }
         }
 
