@@ -104,7 +104,7 @@ public class FearControls : MonoBehaviour
         if (collision.CompareTag("Boundary"))
         {
             // Game Over
-            GameManager.gameManagerInstance.EndGame();
+            GameManager.gameManagerInstance.RestartLevel();
         }
     }
 }

@@ -18,6 +18,11 @@ public class PlatBreak : MonoBehaviour
     IEnumerator WaitForBreak()
     {
         yield return new WaitForSeconds(timeUntilBreak);
-        gameObject.SetActive(false);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+
+        yield return new WaitForSeconds(1.25f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent <Collider2D>().enabled = true;
     }
 }

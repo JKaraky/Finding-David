@@ -28,4 +28,12 @@ public class Damage : MonoBehaviour
             other.gameObject.GetComponent<PlayerEmotion>().fear -= damage;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerEmotion>().fear -= damage;
+        }
+    }
 }
