@@ -7,6 +7,7 @@ public class SwitchGravity : MonoBehaviour
     private Rigidbody2D rb;
     private bool top;
 
+
         
      void Start()
     {
