@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limitAngle: 45
-  swaySpeed: 20
+  swaySpeed: 30
   transitionTime: 5
 --- !u!114 &519420035
 MonoBehaviour:
