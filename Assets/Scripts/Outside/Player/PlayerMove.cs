@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float moveSpeed;
     private Rigidbody2D playerRb;
+    [HideInInspector] public float movement;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRb.velocity = new Vector2(playerInput.XMovement * moveSpeed, playerRb.velocity.y);
+        movement = playerInput.XMovement;
+        playerRb.velocity = new Vector2(movement * moveSpeed, playerRb.velocity.y);
     }
 }
