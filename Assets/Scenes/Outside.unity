@@ -247,7 +247,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021640718, y: 0}
+  m_Offset: {x: 0.021640718, y: 0.09863615}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -258,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8069712, y: 5}
+  m_Size: {x: 1.8069712, y: 4.8027277}
   m_EdgeRadius: 0
 --- !u!1 &247641578
 GameObject:
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 97825119}
   camerSpeed: 0.1
-  offset: 6
+  offset: 3
 --- !u!1 &889791373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1836,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5128328292286979641, guid: 7daf85bb1a1764e429c115b0d8d43ab3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5128328292286979642, guid: 7daf85bb1a1764e429c115b0d8d43ab3, type: 3}
       propertyPath: m_Size.x
       value: 1.845
