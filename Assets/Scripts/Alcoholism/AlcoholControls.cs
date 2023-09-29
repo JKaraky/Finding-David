@@ -7,7 +7,7 @@ public class AlcoholControls : MonoBehaviour
     #region Variables
     [Header("Movement and Jump")]
     private Rigidbody2D playerRb;
-    private float xMovement;
+    public float xMovement;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
 

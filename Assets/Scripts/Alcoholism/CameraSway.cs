@@ -36,12 +36,10 @@ public class CameraSway : MonoBehaviour
         // if camera goes beyond the angle limit it starts transitioning
         if(cameraRotation > limitAngle || cameraRotation < - limitAngle)
         {
-            Debug.Log("Transition takes over");
             RotationTransition();
         }
         else
         {
-            Debug.Log("standard takes over");
             // Method that keeps roating camera
             RotateCamera(varSwaySpeed);
             ResetTransition();

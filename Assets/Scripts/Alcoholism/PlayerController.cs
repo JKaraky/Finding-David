@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,13 @@ public class PlayerController : MonoBehaviour
 {
   public float speed;
   public float jumpForce;
-  private float moveInput;
+  public float moveInput;
 
   private Rigidbody2D rb;
 
   private bool facingRight = true;
 
-  private bool isGrounded;
+  public bool isGrounded;
   public Transform groundCheck;
   public float checkRadius;
   public LayerMask whatIsGround;
