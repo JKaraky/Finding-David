@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FearControls : MonoBehaviour
+public class FearBehavior : MonoBehaviour
 {
     #region Variables
     [Header("Movement and Jump")]
@@ -42,8 +42,8 @@ public class FearControls : MonoBehaviour
             xMovement = Input.GetAxisRaw("Horizontal");
         }
 
-        if(xMovement > 0 && !isFacingRight)
-        { 
+        if (xMovement > 0 && !isFacingRight)
+        {
             Flip();
         }
         if (xMovement < 0 && isFacingRight)
@@ -81,13 +81,13 @@ public class FearControls : MonoBehaviour
 
     void LightRay()
     {
-        if(!isFacingRight)
+        if (!isFacingRight)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, entityMask);
 
             Debug.DrawRay(transform.position, Vector2.left * 2f, Color.green);
 
-            if(hit.collider != null)
+            if (hit.collider != null)
             {
                 entity.SetActive(false);
                 EntityIsHit?.Invoke();

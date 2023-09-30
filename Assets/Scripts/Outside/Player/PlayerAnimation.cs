@@ -21,11 +21,11 @@ public class PlayerAnimation : MonoBehaviour
 
         if(horizontalMove > 0)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else if(horizontalMove < 0)
         {
-            transform .localScale = new Vector3(-1, 1, 1);
+            transform .localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
     }
 }
