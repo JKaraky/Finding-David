@@ -7,14 +7,7 @@ public class FearBehavior : MonoBehaviour
 {
     #region Variables
     [Header("Movement and Jump")]
-    private Rigidbody2D playerRb;
-    private float xMovement;
     private bool isFacingRight = true;
-    [SerializeField] private float jumpForce;
-
-    [Header("To Check Ground")]
-    [SerializeField] private LayerMask platformLayerMask;
-    private BoxCollider2D boxCollider;
 
     [Header("Ray")]
     public LayerMask entityMask;
@@ -22,52 +15,11 @@ public class FearBehavior : MonoBehaviour
 
     public static event Action EntityIsHit;
     #endregion
-    void Awake()
-    {
-        playerRb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-    }
+
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Jump();
         LightRay();
-    }
-
-    void Movement()
-    {
-        if (isGrounded())
-        {
-            xMovement = Input.GetAxisRaw("Horizontal");
-        }
-
-        if (xMovement > 0 && !isFacingRight)
-        {
-            Flip();
-        }
-        if (xMovement < 0 && isFacingRight)
-        {
-            Flip();
-        }
-    }
-
-    void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
-        {
-            xMovement = Input.GetAxisRaw("Horizontal");
-
-            playerRb.AddForce(new Vector2(xMovement, 1) * jumpForce, ForceMode2D.Impulse);
-        }
-    }
-
-    // To check if the player is on the ground so he can jump again
-    bool isGrounded()
-    {
-        float extraHeight = 0.2f;
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
-        return raycastHit.collider != null;
     }
 
     void Flip()

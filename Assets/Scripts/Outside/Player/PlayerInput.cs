@@ -19,8 +19,13 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _xMovement = Input.GetAxis("Horizontal");
+        WalkingInput();
         SpaceButtonPressed();
+    }
+
+    private void WalkingInput()
+    {
+        _xMovement = Input.GetAxis("Horizontal");
     }
 
     private void SpaceButtonPressed()
