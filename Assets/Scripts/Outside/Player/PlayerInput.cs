@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference moveAction, jumpAction;
     private float _xMovement;
     public float XMovement
     {
@@ -20,19 +23,25 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         WalkingInput();
-        SpaceButtonPressed();
+        //SpaceButtonPressed();
     }
 
     private void WalkingInput()
     {
-        _xMovement = Input.GetAxis("Horizontal");
+        //_xMovement = Input.GetAxis("Horizontal");
+        _xMovement = moveAction.action.ReadValue<Vector2>().x;
     }
 
     private void SpaceButtonPressed()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jumped?.Invoke();
-        }
+        Jumped?.Invoke();
+    }
+    private void OnEnable()
+    {
+        jumpAction.action.performed += ctx => SpaceButtonPressed();
+    }
+    private void OnDisable()
+    {
+        jumpAction.action.performed -= ctx => SpaceButtonPressed();
     }
 }

@@ -18,6 +18,7 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         WalkingAnimation();
+        JumpingAnimation();
     }
 
     private void WalkingAnimation()
@@ -41,7 +42,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if(allowedJump)
         {
-
+            animator.SetBool("IsJumping", playerMove.isJumping);
         }
     }
 }

@@ -11,16 +11,22 @@ public class PlayerMove : MonoBehaviour
     [Header("For Jumping")]
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private float jumpForce;
+    [HideInInspector] public bool isJumping;
 
     [Header("General Components")]
     [SerializeField] private PlayerInput playerInput;
     private BoxCollider2D boxCollider;
     private Rigidbody2D playerRb;
+    private bool checkingForLanding;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        isJumping = false;
+        // Check collider for usage
+        checkingForLanding = false;
     }
 
     // Update is called once per frame
@@ -49,9 +55,23 @@ public class PlayerMove : MonoBehaviour
     {
         if (isGrounded())
         {
+            // Player jumped, now we must check when he lands using collider
+            checkingForLanding = true;
+            isJumping = true;
+
             movement = playerInput.XMovement;
 
             playerRb.AddForce(new Vector2(movement, 1) * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Platform layer is number 8
+        // We only need to switch isJumping during a player jump, hence the flag checkingForLanding
+        if (collision.collider.gameObject.layer == 8 && checkingForLanding)
+        {
+            isJumping = false;
         }
     }
 
