@@ -23,12 +23,10 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         WalkingInput();
-        //SpaceButtonPressed();
     }
 
     private void WalkingInput()
     {
-        //_xMovement = Input.GetAxis("Horizontal");
         _xMovement = moveAction.action.ReadValue<Vector2>().x;
     }
 

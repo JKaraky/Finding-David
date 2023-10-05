@@ -38,10 +38,12 @@ public class PlayerMove : MonoBehaviour
     // To handle player walking
     private void Move()
     {
+        // for horizontal movement
         movement = playerInput.XMovement;
         playerRb.velocity = new Vector2(movement * moveSpeed, playerRb.velocity.y);
     }
 
+    #region To handle Jumping
     // To check if the player is on the ground so he can jump
     bool isGrounded()
     {
@@ -85,4 +87,5 @@ public class PlayerMove : MonoBehaviour
     {
         PlayerInput.Jumped -= Jump;
     }
+    #endregion
 }
