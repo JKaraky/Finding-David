@@ -10,7 +10,7 @@ public class Fade : MonoBehaviour
     // For fade logic
     [SerializeField] private float fadeDuration;
     [SerializeField] private GameObject triggerArea;
-    private Material spriteMaterial;
+    private SpriteRenderer spriteMaterial;
 
     // To check if coroutines are running
     private bool fadeInRunning, fadeOutRunning;
@@ -22,10 +22,7 @@ public class Fade : MonoBehaviour
     void Start()
     {
         // Reference sprite material and make it invisible
-        spriteMaterial = GetComponent<SpriteRenderer>().material;
-        Color color = spriteMaterial.color;
-        color.a = 0;
-        spriteMaterial.color = color;
+        spriteMaterial = GetComponent<SpriteRenderer>();
     }
     #endregion
 
