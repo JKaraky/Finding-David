@@ -9,7 +9,7 @@ public class Fade : MonoBehaviour
     #region Variables
     // For fade logic
     [SerializeField] private float fadeDuration;
-    [SerializeField] private GameObject triggerArea;
+    [SerializeField] private GameObject[] triggerAreas;
     private SpriteRenderer spriteMaterial;
 
     // To check if coroutines are running
@@ -81,31 +81,37 @@ public class Fade : MonoBehaviour
     #region Fade Triggers
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject == triggerArea)
+        foreach (GameObject triggerArea in triggerAreas)
         {
-            if(fadeOutRunning)
+            if (collision.gameObject == triggerArea)
             {
-                StopCoroutine(currentRoutine);
+                if (fadeOutRunning)
+                {
+                    StopCoroutine(currentRoutine);
+                }
+
+                currentRoutine = FadeIn();
+
+                StartCoroutine(currentRoutine);
             }
-
-            currentRoutine = FadeIn();
-
-            StartCoroutine(currentRoutine);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == triggerArea)
+        foreach(GameObject triggerArea in triggerAreas)
         {
-            if (fadeInRunning)
+            if (collision.gameObject == triggerArea)
             {
-                StopCoroutine(currentRoutine);
+                if (fadeInRunning)
+                {
+                    StopCoroutine(currentRoutine);
+                }
+
+                currentRoutine = FadeOut();
+
+                StartCoroutine(currentRoutine);
             }
-
-            currentRoutine = FadeOut();
-
-            StartCoroutine(currentRoutine);
         }
     }
     #endregion
