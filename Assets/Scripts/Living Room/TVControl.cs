@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class TVControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Variables
+
+    [SerializeField] private AudioSource TvSound;
+    [SerializeField] private ChangeLightColor TvLightController;
+    private bool TvOn = true;
+
+    #endregion
+
+    #region Tv Control Method
+    private void ToggleTv()
     {
-        
+        if (TvOn)
+        {
+            TvLightController.gameObject.SetActive(false);
+            TvSound.Pause();
+            TvOn = false;
+        }
+        else
+        {
+            TvLightController.gameObject.SetActive(true);
+            TvSound.Play();
+            TvOn = true;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    #endregion
+
+    #region Subscribe To Interact Button
+    private void OnEnable()
     {
-        
+        PlayerInput.Interacted += ToggleTv;
     }
+
+    private void OnDisable()
+    {
+        PlayerInput.Interacted -= ToggleTv;
+    }
+
+    #endregion
 }
