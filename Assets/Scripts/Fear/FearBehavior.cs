@@ -6,11 +6,9 @@ using UnityEngine;
 public class FearBehavior : MonoBehaviour
 {
     #region Variables
-    [Header("Movement and Jump")]
-    private bool isFacingRight = true;
 
-    [Header("Ray")]
     public LayerMask entityMask;
+
     [SerializeField] GameObject entity;
 
     public static event Action EntityIsHit;
@@ -19,33 +17,23 @@ public class FearBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LightRay();
-    }
-
-    void Flip()
-    {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
-
-        isFacingRight = !isFacingRight;
+        if(transform.localScale.x < 0)
+        {
+            LightRay();
+        }
     }
 
     void LightRay()
     {
-        if (!isFacingRight)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, entityMask);
+
+        Debug.DrawRay(transform.position, Vector2.left * 2f, Color.green);
+
+        if (hit.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, entityMask);
-
-            Debug.DrawRay(transform.position, Vector2.left * 2f, Color.green);
-
-            if (hit.collider != null)
-            {
-                entity.SetActive(false);
-                EntityIsHit?.Invoke();
-            }
+            entity.SetActive(false);
+            EntityIsHit?.Invoke();
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

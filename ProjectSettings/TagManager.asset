@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Noose
   - Boundary
+  - EntityGoal
   layers:
   - Default
   - TransparentFX

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class FearGameManager : MonoBehaviour
 {
-    [SerializeField] GameObject entity;
-    private FearEntity entityScript;
-    [SerializeField] GameObject gameOver;
-
-    void Awake()
+    private void CallEndGame()
     {
-        entityScript = entity.GetComponent<FearEntity>();
+        GameManager.gameManagerInstance.EndGame();
     }
-    // Update is called once per frame
-    void Update()
+
+    private void OnEnable()
     {
-        if(entityScript.timeUntilDeath < entityScript.elapsedTime)
-        {
-            GameManager.gameManagerInstance.EndGame();
-        }
+        FearEntity.ReachedGoal += CallEndGame;
+    }
+
+    private void OnDisable()
+    {
+        FearEntity.ReachedGoal -= CallEndGame;
     }
 }

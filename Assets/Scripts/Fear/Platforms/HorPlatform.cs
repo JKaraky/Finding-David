@@ -34,16 +34,16 @@ public class HorPlatform : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.collider.transform.parent = this.transform;
+            collision.gameObject.transform.parent = this.transform;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.collider.transform.parent = null;
+            collision.gameObject.transform.parent = null;
         }
     }
 }

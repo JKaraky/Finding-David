@@ -1,24 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class FearEntity : MonoBehaviour
 {
-    [SerializeField] float distanceFromPlayer;
+    #region Variables
+
     [SerializeField] GameObject player;
-    public float losingDistance;
-    public int timeUntilDeath;
-    [HideInInspector] public float elapsedTime;
+
+    [SerializeField] float speed;
+    [SerializeField] float distanceFromPlayer;
+
+    public static event Action ReachedGoal;
+
+    #endregion
+
     void OnEnable()
     {
-        elapsedTime = 0;
         transform.position = player.transform.position - new Vector3 (distanceFromPlayer, 0, 0);
     }
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        float percentageComplete = elapsedTime / timeUntilDeath;
-        transform.position = Vector3.Lerp(transform.position, player.transform.position - new Vector3(losingDistance, 0, 0), percentageComplete/100);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("EntityGoal"))
+        {
+            ReachedGoal?.Invoke();
+        }
     }
 }

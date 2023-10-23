@@ -41,23 +41,6 @@ public class PlayerEmotion : MonoBehaviour
         {
             fear = 0;
         }
-
-        // to activate entity when bar is empty
-        if(fear == 0)
-        {
-            entity.SetActive(true);
-        }
-    }
-
-    // Subscribe and subscribe from event of hitting entity
-    private void OnEnable()
-    {
-        FearControls.EntityIsHit += FillBar;
-    }
-
-    private void OnDisable()
-    {
-        FearControls.EntityIsHit -= FillBar;
     }
 
     public void FillBar()
