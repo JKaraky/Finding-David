@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 3751abbe793063348ae48b1ce4970c0f
-  - enabled: 0
-    path: Assets/Scenes/Alcoholism.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/House.unity
+    guid: ea5b8ea56ccfa414ba7b68c49fdc0e7f
+  - enabled: 1
     path: Assets/Scenes/Fear.unity
     guid: 3a0da412f481e164184d76e6c6befe75
   - enabled: 1
     path: Assets/Scenes/Outside.unity
     guid: 8a755b55e92e8634895fbd451798d628
+  - enabled: 0
+    path: Assets/Scenes/Alcoholism.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
