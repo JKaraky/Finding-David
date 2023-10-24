@@ -20,7 +20,6 @@ public class EntityTimer : MonoBehaviour
     private IEnumerator SpawnEntity()
     {
         int entityWaitTime = Random.Range(minWaitTime, maxWaitTime + 1);
-        Debug.Log("Time to spawn entity: " + entityWaitTime);
         timeDetermined = true;
         yield return new WaitForSeconds(entityWaitTime);
         entity.SetActive(true);

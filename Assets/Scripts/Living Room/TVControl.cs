@@ -8,26 +8,30 @@ public class TVControl : MonoBehaviour
 
     [SerializeField] private AudioSource TvSound;
     [SerializeField] private ChangeLightColor TvLightController;
+
     private bool TvOn = true;
+    private bool inDistance = false;
 
     #endregion
 
     #region Tv Control Method
     private void ToggleTv()
     {
-        if (TvOn)
+        if (inDistance)
         {
-            TvLightController.gameObject.SetActive(false);
-            TvSound.Pause();
-            TvOn = false;
+            if (TvOn)
+            {
+                TvLightController.gameObject.SetActive(false);
+                TvSound.Pause();
+                TvOn = false;
+            }
+            else
+            {
+                TvLightController.gameObject.SetActive(true);
+                TvSound.Play();
+                TvOn = true;
+            }
         }
-        else
-        {
-            TvLightController.gameObject.SetActive(true);
-            TvSound.Play();
-            TvOn = true;
-        }
-
     }
 
     #endregion
@@ -41,6 +45,27 @@ public class TVControl : MonoBehaviour
     private void OnDisable()
     {
         PlayerInput.Interacted -= ToggleTv;
+    }
+
+    #endregion
+
+    #region Check for Trigger
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            inDistance = true;
+            Debug.Log(inDistance);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            inDistance = false;
+        }
     }
 
     #endregion
