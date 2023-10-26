@@ -56,7 +56,6 @@ public class TVControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             inDistance = true;
-            Debug.Log(inDistance);
         }
     }
 
