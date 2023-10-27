@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("For Walking")]
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
     [HideInInspector] public float movement;
 
     [Header("For Jumping")]
