@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9e554a7625356740a032fc96016806d
+guid: 432f2e474fd44294db85d54c67e7f10a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking_0
+      name: WalkingTest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8717a33ac966104fb729fd7f9ffc473
-      internalID: 673813234
+      spriteID: 9fb8e8f6eb8a9dd42ab3aa83ae5b53a1
+      internalID: 728247219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_1
+      name: WalkingTest_1
       rect:
         serializedVersion: 2
         x: 1000
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a344544cb0386c748a75fa3de70443a9
-      internalID: -1480917545
+      spriteID: 5b9fd1781979c404ea22f355c37fd23a
+      internalID: -516938358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_2
+      name: WalkingTest_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7c6e8b8eb52979469566022025854be
-      internalID: 1670177107
+      spriteID: fbd38258cbedd3e4eabad6d8212a16a7
+      internalID: -1433310693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_3
+      name: WalkingTest_3
       rect:
         serializedVersion: 2
         x: 3000
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b33ed11ec541dd4aa845077bb0e2dc9
-      internalID: -258942339
+      spriteID: fa3b00e5893ec7a4a9f99dc3fe03eeb9
+      internalID: -79891442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_4
+      name: WalkingTest_4
       rect:
         serializedVersion: 2
         x: 4000
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 991cdfbb489135a41b1f44a66f54d81c
-      internalID: -1679497158
+      spriteID: bfccc4a1d8876694fa26923ff05d847b
+      internalID: -1009996818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_5
+      name: WalkingTest_5
       rect:
         serializedVersion: 2
         x: 5000
@@ -248,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381afdf6d33fcc74a94822e2e90fb8fe
-      internalID: -1856651850
+      spriteID: 9099e835826b1034299ec0c0af08c8e2
+      internalID: 1331194197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_6
+      name: WalkingTest_6
       rect:
         serializedVersion: 2
         x: 6000
@@ -269,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f1453349ad2aec498a2bacd86981e23
-      internalID: -669406271
+      spriteID: ce3f27290e3bb064e965097135e31ad7
+      internalID: -710842087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_7
+      name: WalkingTest_7
       rect:
         serializedVersion: 2
         x: 7000
@@ -290,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 483098d7d058f234f82943162b1742bb
-      internalID: -873387056
+      spriteID: debf5af923e3f2e45be3d315a6b0f78f
+      internalID: -1470824792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_8
+      name: WalkingTest_8
       rect:
         serializedVersion: 2
         x: 8000
@@ -311,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cf1e85d0d103d84485242e4c94c4509
-      internalID: 12947696
+      spriteID: 8bef5ab2c96a78342ac425ceeb0020e1
+      internalID: -1555353120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_9
+      name: WalkingTest_9
       rect:
         serializedVersion: 2
         x: 9000
@@ -332,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da15879acbc282943aec9daca0feca6e
-      internalID: 1489085984
+      spriteID: f78cf55b8a0d8a6448464a695f97ab51
+      internalID: 828715178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_10
+      name: WalkingTest_10
       rect:
         serializedVersion: 2
         x: 10000
@@ -353,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d616bd590ca49d469b6a48374059adc
-      internalID: -357565381
+      spriteID: 67236f1e5ef72934292aadb499e0523e
+      internalID: -432417808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking_11
+      name: WalkingTest_11
       rect:
         serializedVersion: 2
         x: 11000
@@ -374,8 +374,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62694d05ae5791b42b1514a98dcf9c77
-      internalID: -1137530602
+      spriteID: 518a599dfaa00344ca0131faacf4fab3
+      internalID: 1626773448
       vertices: []
       indices: 
       edges: []
@@ -391,18 +391,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walking_0: 673813234
-      Walking_1: -1480917545
-      Walking_10: -357565381
-      Walking_11: -1137530602
-      Walking_2: 1670177107
-      Walking_3: -258942339
-      Walking_4: -1679497158
-      Walking_5: -1856651850
-      Walking_6: -669406271
-      Walking_7: -873387056
-      Walking_8: 12947696
-      Walking_9: 1489085984
+      WalkingTest_0: 728247219
+      WalkingTest_1: -516938358
+      WalkingTest_10: -432417808
+      WalkingTest_11: 1626773448
+      WalkingTest_2: -1433310693
+      WalkingTest_3: -79891442
+      WalkingTest_4: -1009996818
+      WalkingTest_5: 1331194197
+      WalkingTest_6: -710842087
+      WalkingTest_7: -1470824792
+      WalkingTest_8: -1555353120
+      WalkingTest_9: 828715178
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

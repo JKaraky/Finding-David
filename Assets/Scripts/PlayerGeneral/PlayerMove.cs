@@ -48,8 +48,7 @@ public class PlayerMove : MonoBehaviour
     bool isGrounded()
     {
         float extraHeight = 0.2f;
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
-        return raycastHit.collider != null;
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
     }
 
     // To handle Jumping
