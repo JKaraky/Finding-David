@@ -18,40 +18,25 @@ public class PlatBreak : MonoBehaviour
     IEnumerator WaitForBreak()
     {
         yield return new WaitForSeconds(timeUntilBreak);
-        try
+
+        // Disabling children lol
+        foreach (Transform childTransform in this.transform)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<Collider2D>().enabled = false;
-        }catch (System.Exception e)
-        {
-            Debug.LogException(e);
-        }
-        // Disabling the colliders and sprite renderers in children as well
-        foreach (SpriteRenderer renderer in gameObject.GetComponentsInChildren<SpriteRenderer>())
-        {
-            renderer.enabled = false;
-        }
-        foreach (Collider2D collider in gameObject.GetComponentsInChildren<Collider2D>())
-        {
-            collider.enabled = false;
+            GameObject child = childTransform.gameObject;
+            child.SetActive(false);
         }
 
-        yield return new WaitForSeconds(1.25f);
-        try
+        this.GetComponent<Collider2D>().enabled = false;
+
+        yield return new WaitForSeconds(6f);
+
+        // Enabling children boo
+        foreach (Transform childTransform in this.transform)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            gameObject.GetComponent<Collider2D>().enabled = true;
-        }catch (System.Exception e)
-        {
-            Debug.LogException(e);
+            GameObject child = childTransform.gameObject;
+            child.SetActive(true);
         }
-        foreach (SpriteRenderer renderer in gameObject.GetComponentsInChildren<SpriteRenderer>())
-        {
-            renderer.enabled = false;
-        }
-        foreach (Collider2D collider in gameObject.GetComponentsInChildren<Collider2D>())
-        {
-            collider.enabled = false;
-        }
+
+        this.GetComponent<Collider2D>().enabled = true;
     }
 }
