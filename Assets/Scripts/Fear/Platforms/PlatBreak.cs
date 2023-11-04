@@ -18,11 +18,40 @@ public class PlatBreak : MonoBehaviour
     IEnumerator WaitForBreak()
     {
         yield return new WaitForSeconds(timeUntilBreak);
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        try
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
+        // Disabling the colliders and sprite renderers in children as well
+        foreach (SpriteRenderer renderer in gameObject.GetComponentsInChildren<SpriteRenderer>())
+        {
+            renderer.enabled = false;
+        }
+        foreach (Collider2D collider in gameObject.GetComponentsInChildren<Collider2D>())
+        {
+            collider.enabled = false;
+        }
 
         yield return new WaitForSeconds(1.25f);
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        gameObject.GetComponent <Collider2D>().enabled = true;
+        try
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
+        foreach (SpriteRenderer renderer in gameObject.GetComponentsInChildren<SpriteRenderer>())
+        {
+            renderer.enabled = false;
+        }
+        foreach (Collider2D collider in gameObject.GetComponentsInChildren<Collider2D>())
+        {
+            collider.enabled = false;
+        }
     }
 }
