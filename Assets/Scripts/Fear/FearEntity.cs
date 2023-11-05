@@ -19,12 +19,20 @@ public class FearEntity : MonoBehaviour
 
     void OnEnable()
     {
-        transform.position = player.transform.position - new Vector3 (distanceFromPlayer, 0, 0);
+        if(player.transform.localScale.x > 0)
+        {
+            transform.position = player.transform.position - new Vector3(distanceFromPlayer, 0, 0);
+        }
+        else
+        {
+            transform.position = player.transform.position + new Vector3(distanceFromPlayer, 0, 0);
+        }
     }
 
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

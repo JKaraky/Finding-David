@@ -17,17 +17,14 @@ public class FearBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.localScale.x < 0)
-        {
-            LightRay();
-        }
+        LightRay();
     }
 
     void LightRay()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 2f, entityMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(transform.localScale.x, 0), 2f, entityMask);
 
-        Debug.DrawRay(transform.position, Vector2.left * 2f, Color.green);
+        Debug.DrawRay(transform.position, new Vector2(transform.localScale.x, 0) * 2f, Color.green);
 
         if (hit.collider != null)
         {
