@@ -1,17 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class FearBehavior : MonoBehaviour
+public class Flashlight : MonoBehaviour
 {
     #region Variables
 
     public LayerMask entityMask;
 
     [SerializeField] GameObject entity;
+    [SerializeField] GameObject player;
 
     public static event Action EntityIsHit;
+
+    private float direction = 1;
     #endregion
 
     // Update is called once per frame
@@ -22,9 +25,12 @@ public class FearBehavior : MonoBehaviour
 
     void LightRay()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(transform.localScale.x, 0), 2f, entityMask);
+        // So that the ray flips with the player when he is looking the opposite way
+        direction = player.transform.localScale.x;
 
-        Debug.DrawRay(transform.position, new Vector2(transform.localScale.x, 0) * 2f, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(transform.localScale.x * direction, 0), 3.5f, entityMask);
+
+        Debug.DrawRay(transform.position, new Vector2(transform.localScale.x * direction, 0) * 3.5f, Color.green);
 
         if (hit.collider != null)
         {
