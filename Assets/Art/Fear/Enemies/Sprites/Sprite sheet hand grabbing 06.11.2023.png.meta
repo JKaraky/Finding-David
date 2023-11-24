@@ -1,0 +1,565 @@
+fileFormatVersion: 2
+guid: 2554e34ff4a38644aa5474c6be222581
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 500
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439531b798e284645875acf41f68c732
+      internalID: -790910419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_1
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc277fc69342f54190376004f0980b6
+      internalID: 1132062489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_2
+      rect:
+        serializedVersion: 2
+        x: 1578
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc7c22c544b1cb40ad60c41321e37c0
+      internalID: -578064087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_3
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dfd8d281b1f1d24da6db12e5d822373
+      internalID: -1367252420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_4
+      rect:
+        serializedVersion: 2
+        x: 3156
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a30fe4532a109f4e8a39e9b7bf36065
+      internalID: -863813905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_5
+      rect:
+        serializedVersion: 2
+        x: 3945
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458d6d36f61dc0e469e1a2ea0a3eab25
+      internalID: -425551675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_6
+      rect:
+        serializedVersion: 2
+        x: 4734
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a29a333e693f846a5f9bf24ced05e0
+      internalID: -77004324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_7
+      rect:
+        serializedVersion: 2
+        x: 5523
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609b710659437d748ad7f66afdefb378
+      internalID: -1923583084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_8
+      rect:
+        serializedVersion: 2
+        x: 6312
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a54a4ecc6e3dd44bd0d9daab7a16ee
+      internalID: -441674996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_9
+      rect:
+        serializedVersion: 2
+        x: 7101
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cc5514fa5025d4992da663b3e77229
+      internalID: -1927276922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_10
+      rect:
+        serializedVersion: 2
+        x: 7890
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9244815de3e607747a583c39fd1ae85d
+      internalID: -323531721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_11
+      rect:
+        serializedVersion: 2
+        x: 8679
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33fe0b1f23cca7a45821818ecff54b61
+      internalID: -364079768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_12
+      rect:
+        serializedVersion: 2
+        x: 9468
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee92c76393577a438b36421aa0670dc
+      internalID: 824708575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_13
+      rect:
+        serializedVersion: 2
+        x: 10257
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ba5931788249d459217d4392a9924c
+      internalID: -1865438146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_14
+      rect:
+        serializedVersion: 2
+        x: 11046
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ae7612b96bcab4992184769ddd3bdd
+      internalID: -1410983848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_15
+      rect:
+        serializedVersion: 2
+        x: 11835
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d14f59de8415e4ebcfc2c4d98f8b30
+      internalID: 1045220400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_16
+      rect:
+        serializedVersion: 2
+        x: 12624
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73f849e4b472f3a4680268a691996609
+      internalID: 808869847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_17
+      rect:
+        serializedVersion: 2
+        x: 13413
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599aa833a5666364195732f9ef41bc4f
+      internalID: -1497007176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite sheet hand grabbing 06.11.2023_18
+      rect:
+        serializedVersion: 2
+        x: 14202
+        y: 0
+        width: 789.4211
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f71d845b846f14f861596fd5ce85fd
+      internalID: 1868656369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Sprite sheet hand grabbing 06.11.2023_0: -790910419
+      Sprite sheet hand grabbing 06.11.2023_1: 1132062489
+      Sprite sheet hand grabbing 06.11.2023_10: -323531721
+      Sprite sheet hand grabbing 06.11.2023_11: -364079768
+      Sprite sheet hand grabbing 06.11.2023_12: 824708575
+      Sprite sheet hand grabbing 06.11.2023_13: -1865438146
+      Sprite sheet hand grabbing 06.11.2023_14: -1410983848
+      Sprite sheet hand grabbing 06.11.2023_15: 1045220400
+      Sprite sheet hand grabbing 06.11.2023_16: 808869847
+      Sprite sheet hand grabbing 06.11.2023_17: -1497007176
+      Sprite sheet hand grabbing 06.11.2023_18: 1868656369
+      Sprite sheet hand grabbing 06.11.2023_2: -578064087
+      Sprite sheet hand grabbing 06.11.2023_3: -1367252420
+      Sprite sheet hand grabbing 06.11.2023_4: -863813905
+      Sprite sheet hand grabbing 06.11.2023_5: -425551675
+      Sprite sheet hand grabbing 06.11.2023_6: -77004324
+      Sprite sheet hand grabbing 06.11.2023_7: -1923583084
+      Sprite sheet hand grabbing 06.11.2023_8: -441674996
+      Sprite sheet hand grabbing 06.11.2023_9: -1927276922
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

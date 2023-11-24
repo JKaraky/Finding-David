@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -25,7 +26,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         // To activate animation
         horizontalMove = playerMove.movement;
+
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        
 
         // To flip sprite
         if (horizontalMove > 0)

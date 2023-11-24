@@ -53,32 +53,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-4945728951458766994
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FearWalk
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7ceb0e2d560f17d449abcb7c4358d563, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1107 &-1136436681964558543
 AnimatorStateMachine:
   serializedVersion: 6
@@ -93,25 +67,22 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8498679027170241058}
-    m_Position: {x: 500, y: 290, z: 0}
+    m_Position: {x: 960, y: 560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6975831038306237949}
-    m_Position: {x: 510, y: 370, z: 0}
+    m_Position: {x: 970, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9144271140215505974}
-    m_Position: {x: 550, y: 480, z: 0}
+    m_Position: {x: 970, y: 670, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7246759183014082446}
-    m_Position: {x: 580, y: 570, z: 0}
+    m_Position: {x: 980, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1571663377020265858}
-    m_Position: {x: 550, y: 650, z: 0}
+    m_Position: {x: 950, y: 790, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5190803819780822999}
     m_Position: {x: 30, y: 340, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -4945728951458766994}
-    m_Position: {x: 65, y: 405, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
