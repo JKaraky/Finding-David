@@ -48,4 +48,26 @@ public class PlayerAnimation : MonoBehaviour
             animator.SetBool("IsJumping", playerMove.isJumping);
         }
     }
+
+    private void GrabbedAnimation()
+    {
+        animator.SetTrigger("Held");
+    }
+
+    private void ReleasedAnimation()
+    {
+        animator.SetTrigger("Released");
+    }
+
+    private void OnEnable()
+    {
+        HoldPlayer.GrabbedPlayer += GrabbedAnimation;
+        HoldPlayer.ReleasedPlayer += ReleasedAnimation;
+    }
+
+    private void OnDisable()
+    {
+        HoldPlayer.GrabbedPlayer -= GrabbedAnimation;
+        HoldPlayer.ReleasedPlayer -= ReleasedAnimation;
+    }
 }

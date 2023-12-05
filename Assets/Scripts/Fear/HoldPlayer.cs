@@ -10,6 +10,8 @@ public class HoldPlayer : MonoBehaviour
     [SerializeField] float holdTime;
 
     private BoxCollider2D handCollider;
+    private Transform grabPositionOne;
+    private Transform grabPositionTwo;
     private bool deactivated = false;
 
     public static Action GrabbedPlayer;
@@ -18,6 +20,13 @@ public class HoldPlayer : MonoBehaviour
     #endregion
 
     #region Hold Logic
+
+    private void Start()
+    {
+        Transform[] grabPositions = gameObject.GetComponentsInChildren<Transform>();
+        grabPositionOne = grabPositions[1];
+        grabPositionTwo = grabPositions[2];
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,6 +48,25 @@ public class HoldPlayer : MonoBehaviour
                 Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
 
                 playerRb.velocity = new Vector2(0, 0);
+
+                //// Change player leg order to be behind hand
+                //GameObject playerLeg = collision.gameObject.transform.Find("LeftLeg").gameObject;
+                //int originalSortingLayer = playerLeg.GetComponent<SpriteRenderer>().sortingOrder;
+                //playerLeg.GetComponent<SpriteRenderer>().sortingOrder = gameObject.GetComponent<SpriteRenderer>().sortingOrder - 1;
+
+                //Snap player to grab position
+                Vector3 playerPosition = collision.transform.position;
+
+                if(playerPosition.x > gameObject.transform.position.x)
+                {
+                    playerPosition = grabPositionTwo.position;
+                    collision.transform.position = playerPosition;
+                }
+                else
+                {
+                    playerPosition = grabPositionOne.position;
+                    collision.transform.position = playerPosition;
+                }
 
                 // Prevent player from moving for a limited time
                 StartCoroutine(HoldTime(playerMove));
