@@ -49,7 +49,6 @@ public class FearEntity : MonoBehaviour
     {
         float step = variableSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, entityGoal.transform.position, step);
-        Debug.Log(variableSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
