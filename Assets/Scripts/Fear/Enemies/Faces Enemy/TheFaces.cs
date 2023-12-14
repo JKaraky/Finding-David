@@ -15,6 +15,7 @@ public class TheFaces : MonoBehaviour
     private bool engaged = false;                  // Check if enemy is facing off with player or not
 
     private int faceNumber = 0;                    // To keep track of which face in pattern to activate next
+    private int correctSelection = 0;              // To keep track of how many faces the player chose right 
 
     #endregion
 
@@ -41,18 +42,16 @@ public class TheFaces : MonoBehaviour
         }
         else
         {
-            // Code to be adde in order to clear all faces from patterns immediately
-
-
             ChoiceControl();
         }
     }
     #endregion
 
-    #region Methods for Face Selection, Pattern Activation and Reset Faces
+    #region Methods
+    
+    // Create a pattern from the faces which can be made up of 3 or more faces
     private void ChooseFaces()
     {
-        // Create a pattern from the faces which can be made up of 3 or more faces
         int facesQuantity = Random.Range(3, faces.Count + 1);
 
         for(int i = 0; i < facesQuantity; i++)
@@ -62,65 +61,115 @@ public class TheFaces : MonoBehaviour
         }
     }
 
+    // Show pattern when enemy not engaged
     private void PatternControl()
     {
         if(!faceBeingProcessed)
         {
-            StartCoroutine(ActivateFace(patternFaces[faceNumber]));
-
-            faceNumber++;
-
-            if(faceNumber >= patternFaces.Count)
+            // Check if beginning of pattern or not
+            if(faceNumber == 0)
             {
-                faceNumber = 0;
+                StartCoroutine(ActivateFace(patternFaces[faceNumber], true));
+            }
+            else
+            {
+                StartCoroutine(ActivateFace(patternFaces[faceNumber], false));
             }
         }
     }
 
+    // Show face to choose when enemy is engaged
     private void ChoiceControl()
     {
         if (!faceBeingProcessed)
         {
             StartCoroutine(ChooseFace(faces[faceNumber]));
-
-            faceNumber++;
-
-            if (faceNumber >= faces.Count)
-            {
-                faceNumber = 0;
-            }
         }
     }
 
-    private void ResetFaces()
+    // Face selection by player and its handling
+    private void PlayerFaceSelection()
     {
-        // Code inside loop must be replaced later on
-        for (int i = 0; i < faces.Count; i++)
+        if (faces[faceNumber] == patternFaces[correctSelection])
         {
-            faces[i].GetComponent<SpriteRenderer>().color = Color.white;
+            // Stops all coroutines and resets flag
+            StopAllCoroutines();
+            faceBeingProcessed = false;
+
+            // Highlights the correct choice
+            faces[faceNumber].GetComponent<SpriteRenderer>().color = Color.green;
+
+            correctSelection++;
+            faceNumber = 0;
+
+            // If entire pattern is correct
+            if(correctSelection >= patternFaces.Count)
+            {
+                gameObject.transform.parent.gameObject.SetActive(false);
+            }
         }
+        else
+        {
+            ResetFaces(0);
+            
+            //Reset counter so player has to reenter entire pattern
+            correctSelection = 0;
+            faceNumber = 0;
+        }
+    }
+
+    private void ResetFaces(int index)
+    {
+        if(index > faces.Count)
+        {
+            Debug.LogError("Index number is higher than faces in list");
+        }
+        else
+        {
+            // Code inside loop must be replaced later on
+            for (int i = index; i < faces.Count; i++)
+            {
+                faces[i].GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
+
     }
     #endregion
 
     #region Coroutines
 
     // Randomly turns pattern faces on and off in sequence when enemy is not engaged
-    private IEnumerator ActivateFace(GameObject face)
+    private IEnumerator ActivateFace(GameObject face, bool firstFace)
     {
         // Random generated time in seconds in which the pattern will show on a face
         int patternHoldTime = Random.Range(2, 6);
 
-        // Random generated time in seconds in no pattern is showing
+        // Random generated time in seconds in which no pattern is showing
         int patternDisappearTime = Random.Range(2, 6);
 
         // Signal that the coroutine is processing a face
         faceBeingProcessed = true;
 
         // Code to be changed later when we get the faces
-        face.GetComponent<SpriteRenderer>().color = Color.red;
+        if(firstFace)
+        {
+            face.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        else
+        {
+            face.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
         yield return new WaitForSeconds(patternHoldTime);
         face.GetComponent<SpriteRenderer>().color = Color.white;
         yield return new WaitForSeconds (patternDisappearTime);
+
+        faceNumber++;
+
+        if (faceNumber >= patternFaces.Count)
+        {
+            faceNumber = 0;
+        }
 
         // Signal that the coroutine is done
         faceBeingProcessed = false;
@@ -135,7 +184,14 @@ public class TheFaces : MonoBehaviour
         // Code to be changed later when we get the faces
         face.GetComponent<SpriteRenderer>().color = Color.yellow;
         yield return new WaitForSeconds(intervalToChoose);
-        face.GetComponent <SpriteRenderer>().color = Color.white;
+        face.GetComponent<SpriteRenderer>().color = Color.white;
+
+        faceNumber++;
+
+        if (faceNumber >= faces.Count)
+        {
+            faceNumber = 0;
+        }
 
         // Signal that the coroutine is done
         faceBeingProcessed = false;
@@ -151,7 +207,7 @@ public class TheFaces : MonoBehaviour
             if(faceBeingProcessed)
             {
                 StopAllCoroutines();
-                ResetFaces();
+                ResetFaces(0);
                 faceBeingProcessed = false;
             }
 
@@ -167,13 +223,27 @@ public class TheFaces : MonoBehaviour
             if (faceBeingProcessed)
             {
                 StopAllCoroutines();
-                ResetFaces();
+                ResetFaces(0);
                 faceBeingProcessed = false;
             }
 
             engaged = false;
             faceNumber = 0;
         }
+    }
+
+    #endregion
+
+    #region On Enable and Disable Actions
+
+    private void OnEnable()
+    {
+        PlayerInput.Interacted += PlayerFaceSelection;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInput.Interacted -= PlayerFaceSelection;
     }
 
     #endregion
