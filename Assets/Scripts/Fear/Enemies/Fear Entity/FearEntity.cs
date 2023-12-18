@@ -8,6 +8,7 @@ public class FearEntity : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField] FearGameManager gameManager;
     [SerializeField] GameObject player;
     [SerializeField] GameObject entityGoal;
 
@@ -15,6 +16,11 @@ public class FearEntity : MonoBehaviour
     [SerializeField] float fixedSpeed;
 
     float variableSpeed;
+    int playerFollowOrPlat;
+
+    GameObject playerFollow;
+    GameObject platformToBreak;
+    PlayerClone playerCloneScript;
 
     public float VariableSpeed
     {
@@ -31,8 +37,18 @@ public class FearEntity : MonoBehaviour
 
     #endregion
 
+    private void Awake()
+    {
+        playerFollow = entityGoal; // Saving the player destination
+        playerCloneScript = gameObject.GetComponentInParent<PlayerClone>();
+    }
     void OnEnable()
     {
+        // Determine whether entity will attack player or make a platform breakable (0 for player, 1 for platform)
+        playerFollowOrPlat = UnityEngine.Random.Range(0, 2);
+
+        DetermineEntityTask(playerFollowOrPlat);
+
         variableSpeed = fixedSpeed;
 
         if(player.transform.localScale.x > 0)
@@ -56,6 +72,28 @@ public class FearEntity : MonoBehaviour
         if(collision.CompareTag("EntityGoal"))
         {
             ReachedGoal?.Invoke();
+        }
+        else if (collision.gameObject.layer == 8) // Hits a platform
+        {
+            gameObject.SetActive(false);
+            collision.gameObject.AddComponent<PlatBreak>();
+        }
+    }
+
+    private void DetermineEntityTask(int toggle)
+    {
+        if (playerFollowOrPlat == 0)
+        {
+            entityGoal = playerFollow;
+
+            playerCloneScript.enabled = true; // Follow player 
+        }
+        else
+        {
+            platformToBreak = gameManager.GetRandomPlatform();
+            entityGoal = platformToBreak;
+
+            playerCloneScript.enabled = false; // Don't follow player
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PlatBreak : MonoBehaviour
 {
-    [SerializeField] float timeUntilBreak;
+    [SerializeField] float timeUntilBreak = 2;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

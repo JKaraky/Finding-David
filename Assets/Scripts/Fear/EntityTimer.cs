@@ -21,7 +21,6 @@ public class EntityTimer : MonoBehaviour
 
     public void PauseEntityTimer()
     {
-        Debug.Log("Entered safe area");
         timeDetermined = true;
         if (entity.activeSelf)
         {
@@ -33,7 +32,6 @@ public class EntityTimer : MonoBehaviour
 
     public void RestartEntityTimer()
     {
-        Debug.Log("Exited safe area");
         timeDetermined = false;
     }
 
