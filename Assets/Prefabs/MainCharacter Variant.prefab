@@ -1237,6 +1237,14 @@ MonoBehaviour:
   jumpForce: 6
   isJumping: 0
   playerInput: {fileID: 0}
+--- !u!81 &4547284943460284786
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132753440624920314}
+  m_Enabled: 1
 --- !u!4 &2182769844734345424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8920503104429021289, guid: 018390e130f5be648a1685b2dfbaabc6, type: 3}

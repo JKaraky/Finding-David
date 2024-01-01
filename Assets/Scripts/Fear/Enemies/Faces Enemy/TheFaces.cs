@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TheFaces : MonoBehaviour
 {
     #region Variables
-    [Tooltip("Amount of time until going to the next face when player is facing enemy")]
+    [Tooltip("Amount of time until going to the next face when player is choosing pattern")]
     public int intervalToChoose = 2;
 
     public List<GameObject> faces;                  // A list of all faces on enemy
@@ -13,9 +14,15 @@ public class TheFaces : MonoBehaviour
 
     private bool faceBeingProcessed = false;       // To check if a coroutine is active
     private bool engaged = false;                  // Check if enemy is facing off with player or not
+    private bool resting = true;                   // Check if enemy is displaying the patterns or not
+    private bool restingCoroutine = false;         // Check if resting coroutine is being processed or not
 
     private int faceNumber = 0;                    // To keep track of which face in pattern to activate next
     private int correctSelection = 0;              // To keep track of how many faces the player chose right 
+    private float fadeTime = 0.5f;
+
+    private AudioSource audioSource;
+    private Animator animator;
 
     #endregion
 
@@ -23,6 +30,9 @@ public class TheFaces : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        animator = gameObject.GetComponentInParent<Animator>();
+
         // Fill the faces list with all of this enemy's faces
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -64,17 +74,24 @@ public class TheFaces : MonoBehaviour
     // Show pattern when enemy not engaged
     private void PatternControl()
     {
-        if(!faceBeingProcessed)
+        if(!resting)
         {
-            // Check if beginning of pattern or not
-            if(faceNumber == 0)
+            if (!faceBeingProcessed)
             {
-                StartCoroutine(ActivateFace(patternFaces[faceNumber], true));
+                // Check if beginning of pattern or not
+                if (faceNumber == 0)
+                {
+                    StartCoroutine(ActivateFace(patternFaces[faceNumber], true));
+                }
+                else
+                {
+                    StartCoroutine(ActivateFace(patternFaces[faceNumber], false));
+                }
             }
-            else
-            {
-                StartCoroutine(ActivateFace(patternFaces[faceNumber], false));
-            }
+        }
+        else
+        {
+            StartCoroutine(RestRoutine());
         }
     }
 
@@ -97,7 +114,7 @@ public class TheFaces : MonoBehaviour
             faceBeingProcessed = false;
 
             // Highlights the correct choice
-            faces[faceNumber].GetComponent<SpriteRenderer>().color = Color.green;
+            faces[faceNumber].FadeOut(fadeTime);
 
             correctSelection++;
             faceNumber = 0;
@@ -129,7 +146,8 @@ public class TheFaces : MonoBehaviour
             // Code inside loop must be replaced later on
             for (int i = index; i < faces.Count; i++)
             {
-                faces[i].GetComponent<SpriteRenderer>().color = Color.white;
+                SpriteRenderer face = faces[i].GetComponent<SpriteRenderer>();
+                face.color = new Color(face.color.r, face.color.g, face.color.b, 0);
             }
         }
 
@@ -141,27 +159,26 @@ public class TheFaces : MonoBehaviour
     // Randomly turns pattern faces on and off in sequence when enemy is not engaged
     private IEnumerator ActivateFace(GameObject face, bool firstFace)
     {
-        // Random generated time in seconds in which the pattern will show on a face
-        int patternHoldTime = Random.Range(2, 6);
-
-        // Random generated time in seconds in which no pattern is showing
-        int patternDisappearTime = Random.Range(2, 6);
-
         // Signal that the coroutine is processing a face
         faceBeingProcessed = true;
 
-        // Code to be changed later when we get the faces
+        // Random generated time in seconds in which the pattern will show on a face
+        int patternHoldTime = Random.Range(3, 6);
+
+        // Random generated time in seconds in which no pattern is showing
+        int patternDisappearTime = Random.Range(3, 6);
+
         if(firstFace)
         {
-            face.GetComponent<SpriteRenderer>().color = Color.green;
+            StartCoroutine(face.FadeIn(fadeTime)); // Still need to add marker that this is the beginning of pattern
         }
         else
         {
-            face.GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(face.FadeIn(fadeTime));
         }
 
         yield return new WaitForSeconds(patternHoldTime);
-        face.GetComponent<SpriteRenderer>().color = Color.white;
+        StartCoroutine(face.FadeOut(fadeTime));
         yield return new WaitForSeconds (patternDisappearTime);
 
         faceNumber++;
@@ -169,22 +186,23 @@ public class TheFaces : MonoBehaviour
         if (faceNumber >= patternFaces.Count)
         {
             faceNumber = 0;
+            resting = true;
         }
 
         // Signal that the coroutine is done
         faceBeingProcessed = false;
     }
 
-    // Goes over each face on the enemy in order so the player can choose
+    // Goes over each face on the enemy so the player can choose
     private IEnumerator ChooseFace(GameObject face)
     {
         // Signal that coroutine is processing face
         faceBeingProcessed = true;
 
         // Code to be changed later when we get the faces
-        face.GetComponent<SpriteRenderer>().color = Color.yellow;
+        StartCoroutine(face.FadeIn(fadeTime));
         yield return new WaitForSeconds(intervalToChoose);
-        face.GetComponent<SpriteRenderer>().color = Color.white;
+        StartCoroutine(face.FadeOut(fadeTime));
 
         faceNumber++;
 
@@ -195,6 +213,28 @@ public class TheFaces : MonoBehaviour
 
         // Signal that the coroutine is done
         faceBeingProcessed = false;
+    }
+
+    // Defines what enemy is doing while resting
+    private IEnumerator RestRoutine()
+    {
+        if (restingCoroutine)
+        {
+            yield return null;
+        }
+        else
+        {
+            restingCoroutine = true;
+            animator.SetBool("Resting", true);
+
+            int restTime = Random.Range(3, 6);
+            yield return new WaitForSeconds(restTime);
+
+            resting = false;
+            restingCoroutine = false;
+            animator.SetBool("Resting", false);
+
+        }
     }
     #endregion
 

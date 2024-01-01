@@ -10,6 +10,8 @@ public class FacesMove : MonoBehaviour
 
     private GameObject player;
 
+    private Animator animator;
+
     private bool engaged = false;
 
     [SerializeField] private float speed;
@@ -19,6 +21,7 @@ public class FacesMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         originalPosition = transform.position;
     }
 
@@ -28,7 +31,7 @@ public class FacesMove : MonoBehaviour
         if (engaged)
         {
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(0,5,0), step);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
         }
     }
 
@@ -38,7 +41,7 @@ public class FacesMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            Debug.Log("Game Over");
         }
     }
 
@@ -50,6 +53,7 @@ public class FacesMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             engaged = true;
+            animator.SetBool("Engaged", true);
             player = collision.gameObject;
         }
     }
@@ -59,6 +63,7 @@ public class FacesMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             engaged = false;
+            animator.SetBool("Engaged", false);
         }
     }
     #endregion
