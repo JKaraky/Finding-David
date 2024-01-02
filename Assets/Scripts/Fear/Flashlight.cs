@@ -12,7 +12,7 @@ public class Flashlight : MonoBehaviour
 
     [SerializeField] GameObject entity;
     [SerializeField] GameObject player;
-    [SerializeField] float entityLeaveTime;
+    [SerializeField] float entityLeaveTime = 1;
 
     [Tooltip("How long flashlight stays off after being hit by faces enemy")]
     [SerializeField] float offTimeFlashlight = 2;
@@ -21,6 +21,7 @@ public class Flashlight : MonoBehaviour
 
     private float direction = 1;
     private bool entityProtocolRunning = false;
+    private bool flashlightOn = true;
     private FearEntity fearEntityScript;
     #endregion
 
@@ -41,24 +42,27 @@ public class Flashlight : MonoBehaviour
         // So that the ray flips with the player when he is looking the opposite way
         direction = player.transform.localScale.x;
 
-        // The actual ray
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(transform.localScale.x * direction, 0), 3.5f, entityMask);
-
-        // To visualize ray
-        Debug.DrawRay(transform.position, new Vector2(transform.localScale.x * direction, 0) * 3.5f, Color.green);
-
-        // Handle entity leave protocol and stop it if it was running and the ray no longer is hitting entity
-        if (hit.collider != null)
+        if(flashlightOn)
         {
-            StartCoroutine("EntityHitProtocol");
-        }
-        else
-        {
-            if(entityProtocolRunning)
+            // The actual ray
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(transform.localScale.x * direction, 0), 3.5f, entityMask);
+
+            // To visualize ray
+            Debug.DrawRay(transform.position, new Vector2(transform.localScale.x * direction, 0) * 3.5f, Color.green);
+
+            // Handle entity leave protocol and stop it if it was running and the ray no longer is hitting entity
+            if (hit.collider != null)
             {
-                StopCoroutine("EntityHitProtocol");
-                entityProtocolRunning = false;
-                fearEntityScript.VariableSpeed = fearEntityScript.FixedSpeed;
+                StartCoroutine("EntityHitProtocol");
+            }
+            else
+            {
+                if (entityProtocolRunning)
+                {
+                    StopCoroutine("EntityHitProtocol");
+                    entityProtocolRunning = false;
+                    fearEntityScript.VariableSpeed = fearEntityScript.FixedSpeed;
+                }
             }
         }
     }
@@ -107,6 +111,7 @@ public class Flashlight : MonoBehaviour
 
     IEnumerator FlashlightBehavior()
     {
+        flashlightOn = false;
         Light2D light = GetComponent<Light2D>();
         FlashlightFlicker flickerer = GetComponent<FlashlightFlicker>();
 
@@ -115,6 +120,7 @@ public class Flashlight : MonoBehaviour
 
         yield return new WaitForSeconds(offTimeFlashlight);
 
+        flashlightOn = true;
         light.enabled = true;
         flickerer.enabled = true;
     }
