@@ -14,8 +14,9 @@ public class FlashlightFlicker : MonoBehaviour
     private float maxIntensity;
     private bool isFlickering = true;
 
-    void Start()
+    void OnEnable()
     {
+        isFlickering = true;
         flashlight = GetComponent<Light2D>();
         maxIntensity = flashlight.intensity;
         flickerTime = Random.Range(0.0f, 1.0f); // Randomize the starting time for variation.

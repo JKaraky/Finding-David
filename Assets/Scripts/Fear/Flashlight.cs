@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Rendering.Universal;
 
 public class Flashlight : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Flashlight : MonoBehaviour
     [SerializeField] GameObject entity;
     [SerializeField] GameObject player;
     [SerializeField] float entityLeaveTime;
+
+    [Tooltip("How long flashlight stays off after being hit by faces enemy")]
+    [SerializeField] float offTimeFlashlight = 2;
 
     public static event Action EntityIsHit;
 
@@ -92,5 +96,41 @@ public class Flashlight : MonoBehaviour
             entityProtocolRunning = false;
         }
     }
+    #endregion
+
+    #region Method and Behavior When Faces Enemy Reaches Player
+
+    public void TurnOffFlashlight()
+    {
+        StartCoroutine(FlashlightBehavior());
+    }
+
+    IEnumerator FlashlightBehavior()
+    {
+        Light2D light = GetComponent<Light2D>();
+        FlashlightFlicker flickerer = GetComponent<FlashlightFlicker>();
+
+        light.enabled = false;
+        flickerer.enabled = false;
+
+        yield return new WaitForSeconds(offTimeFlashlight);
+
+        light.enabled = true;
+        flickerer.enabled = true;
+    }
+    #endregion
+
+    #region Subscription to Events
+
+    private void OnEnable()
+    {
+        FacesMove.Hitplayer += TurnOffFlashlight;
+    }
+
+    private void OnDisable()
+    {
+        FacesMove.Hitplayer -= TurnOffFlashlight;
+    }
+
     #endregion
 }

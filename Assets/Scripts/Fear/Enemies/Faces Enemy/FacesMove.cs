@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class FacesMove : MonoBehaviour
     private bool engaged = false;
 
     [SerializeField] private float speed;
+
+    public static event Action Hitplayer;
 
     #endregion
 
@@ -41,7 +44,8 @@ public class FacesMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Game Over");
+            Hitplayer?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 

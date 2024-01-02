@@ -21,7 +21,7 @@ public class TheFaces : MonoBehaviour
     private int correctSelection = 0;              // To keep track of how many faces the player chose right 
     private float fadeTime = 0.5f;
 
-    private AudioSource audioSource;
+    private FacesAudio audioSource;
     private Animator animator;
 
     #endregion
@@ -30,7 +30,7 @@ public class TheFaces : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<FacesAudio>();
         animator = gameObject.GetComponentInParent<Animator>();
 
         // Fill the faces list with all of this enemy's faces
@@ -109,12 +109,13 @@ public class TheFaces : MonoBehaviour
     {
         if (faces[faceNumber] == patternFaces[correctSelection])
         {
+            audioSource.PlayCorrectSelection();
+
             // Stops all coroutines and resets flag
             StopAllCoroutines();
             faceBeingProcessed = false;
 
-            // Highlights the correct choice
-            faces[faceNumber].FadeOut(fadeTime);
+            ResetFaces(0);
 
             correctSelection++;
             faceNumber = 0;
@@ -127,6 +128,8 @@ public class TheFaces : MonoBehaviour
         }
         else
         {
+            audioSource.PlayWrongSelection();
+
             ResetFaces(0);
             
             //Reset counter so player has to reenter entire pattern
@@ -162,12 +165,6 @@ public class TheFaces : MonoBehaviour
         // Signal that the coroutine is processing a face
         faceBeingProcessed = true;
 
-        // Random generated time in seconds in which the pattern will show on a face
-        int patternHoldTime = Random.Range(3, 6);
-
-        // Random generated time in seconds in which no pattern is showing
-        int patternDisappearTime = Random.Range(3, 6);
-
         if(firstFace)
         {
             StartCoroutine(face.FadeIn(fadeTime)); // Still need to add marker that this is the beginning of pattern
@@ -177,9 +174,9 @@ public class TheFaces : MonoBehaviour
             StartCoroutine(face.FadeIn(fadeTime));
         }
 
-        yield return new WaitForSeconds(patternHoldTime);
+        yield return new WaitForSeconds(4);
         StartCoroutine(face.FadeOut(fadeTime));
-        yield return new WaitForSeconds (patternDisappearTime);
+        yield return new WaitForSeconds (1);
 
         faceNumber++;
 
