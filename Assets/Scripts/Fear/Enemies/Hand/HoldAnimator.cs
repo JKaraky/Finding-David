@@ -31,7 +31,7 @@ public class HoldAnimator : MonoBehaviour
     {
         coroutineRunning = true;
         animator.SetTrigger("MoveTrigger");
-        int timeForChange = Random.Range(3, 6);
+        int timeForChange = Random.Range(3, 5);
         yield return new WaitForSeconds(timeForChange);
         coroutineRunning = false;
     }

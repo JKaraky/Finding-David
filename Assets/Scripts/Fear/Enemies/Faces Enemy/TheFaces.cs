@@ -8,6 +8,7 @@ public class TheFaces : MonoBehaviour
     #region Variables
     [Tooltip("Amount of time until going to the next face when player is choosing pattern")]
     public int intervalToChoose = 2;
+    public int facesInPattern = 3;
 
     public List<GameObject> faces;                  // A list of all faces on enemy
     public List<GameObject> patternFaces;          // A list of randomly chosen faces involved in the pattern
@@ -62,9 +63,7 @@ public class TheFaces : MonoBehaviour
     // Create a pattern from the faces which can be made up of 3 or more faces
     private void ChooseFaces()
     {
-        int facesQuantity = Random.Range(3, faces.Count + 1);
-
-        for(int i = 0; i < facesQuantity; i++)
+        for(int i = 0; i < facesInPattern; i++)
         {
             int indexNumber = Random.Range(0, faces.Count);
             patternFaces.Add(faces[indexNumber]);
