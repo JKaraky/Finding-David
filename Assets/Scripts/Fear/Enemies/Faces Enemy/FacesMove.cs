@@ -17,6 +17,8 @@ public class FacesMove : MonoBehaviour
 
     [SerializeField] private float speed;
 
+    [SerializeField] GameObject particleEffect;
+
     public static event Action Hitplayer;
 
     #endregion
@@ -45,6 +47,7 @@ public class FacesMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Hitplayer?.Invoke();
+            GameObject particle =Instantiate(particleEffect, transform.position + new Vector3(0, 5, 0), transform.rotation);
             gameObject.SetActive(false);
         }
     }

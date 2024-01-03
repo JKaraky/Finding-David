@@ -1447,8 +1447,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 10
-  MaxDistance: 20
+  MinDistance: 4
+  MaxDistance: 13
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -1603,7 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376bd7e8e82264e4a9092c12682dac71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.3
+  particleEffect: {fileID: 3580099904293232953, guid: 7c3cfcd2e4a2f6a4e8117672f6be9a71, type: 3}
 --- !u!1 &2279211708493029316
 GameObject:
   m_ObjectHideFlags: 0
