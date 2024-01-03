@@ -123,7 +123,7 @@ public class TheFaces : MonoBehaviour
             // If entire pattern is correct
             if(correctSelection >= patternFaces.Count)
             {
-                gameObject.transform.parent.gameObject.SetActive(false);
+                gameObject.transform.parent.gameObject.GetComponent<FacesMove>().FacesDeath();
             }
         }
         else

@@ -40,6 +40,12 @@ public class FacesMove : MonoBehaviour
         }
     }
 
+    public void FacesDeath()
+    {
+        GameObject particle = Instantiate(particleEffect, transform.position + new Vector3(0, 5, 0), transform.rotation);
+        gameObject.SetActive(false);
+    }
+
     #region Collision Collider Behavior
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,8 +53,7 @@ public class FacesMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Hitplayer?.Invoke();
-            GameObject particle =Instantiate(particleEffect, transform.position + new Vector3(0, 5, 0), transform.rotation);
-            gameObject.SetActive(false);
+            FacesDeath();
         }
     }
 
