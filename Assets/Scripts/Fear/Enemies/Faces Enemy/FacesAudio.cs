@@ -5,8 +5,10 @@ using UnityEngine;
 public class FacesAudio : MonoBehaviour
 {
     private AudioSource audioSource;
-    [SerializeField] AudioClip correctSelection;
+    [SerializeField] AudioClip[] correctSelections;
     [SerializeField] AudioClip wrongSelection;
+
+    private int correctCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,14 @@ public class FacesAudio : MonoBehaviour
 
     public void PlayCorrectSelection()
     {
-        audioSource.PlayOneShot(correctSelection);
+        audioSource.PlayOneShot(correctSelections[correctCount]);
+
+        correctCount++;
+
+        if(correctCount == correctSelections.Length)
+        {
+            correctCount = 0;
+        }
     }
 
     public void PlayWrongSelection()
