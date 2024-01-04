@@ -24,7 +24,7 @@ public class EntityTimer : MonoBehaviour
         timeDetermined = true;
         if (entity.activeSelf)
         {
-            entity.GetComponent<ParticleSystem>().Play();
+            //entity.GetComponent<ParticleSystem>().Play();
         }
         entity.SetActive(false);
         StopCoroutine(timer);
