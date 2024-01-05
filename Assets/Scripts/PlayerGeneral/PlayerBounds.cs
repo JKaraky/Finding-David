@@ -8,7 +8,7 @@ public class PlayerBounds : MonoBehaviour
     {
         if (collision.CompareTag("Boundary"))
         {
-            GameManager.gameManagerInstance.EndGame();
+            GameManager.gameManagerInstance.RestartLevel();
         }
     }
 }

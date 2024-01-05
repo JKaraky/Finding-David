@@ -72,6 +72,7 @@ public class FearEntity : MonoBehaviour
         if (collision.CompareTag("EntityGoal"))
         {
             ReachedGoal?.Invoke();
+            gameObject.SetActive(false);
         }
         else if (collision.gameObject.layer == 8) // Hits a platform
         {

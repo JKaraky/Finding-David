@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Transform playerStart;
     public GameObject player;
     public GameObject Entity;
+
+    public static event Action LevelRestarted;
 
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        LevelRestarted?.Invoke();
         Time.timeScale = 1;
         gameOver.SetActive(false);
         player.transform.position = playerStart.position;

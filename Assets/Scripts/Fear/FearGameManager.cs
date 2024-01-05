@@ -13,18 +13,18 @@ public class FearGameManager : MonoBehaviour
         platforms.Remove(plat); // Remove it from the list so we don't get it again
         return plat;
     }
-    private void CallEndGame()
+    private void RestartLevel()
     {
-        GameManager.gameManagerInstance.EndGame();
+        GameManager.gameManagerInstance.RestartLevel();
     }
 
     private void OnEnable()
     {
-        FearEntity.ReachedGoal += CallEndGame;
+        FearEntity.ReachedGoal += RestartLevel;
     }
 
     private void OnDisable()
     {
-        FearEntity.ReachedGoal -= CallEndGame;
+        FearEntity.ReachedGoal -= RestartLevel;
     }
 }

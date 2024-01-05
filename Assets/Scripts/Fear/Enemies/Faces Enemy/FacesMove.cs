@@ -23,11 +23,12 @@ public class FacesMove : MonoBehaviour
 
     #endregion
 
+    #region Start and Update
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        originalPosition = transform.position;
+        originalPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -39,12 +40,20 @@ public class FacesMove : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
         }
     }
+    #endregion
 
+    #region Methods
     public void FacesDeath()
     {
         GameObject particle = Instantiate(particleEffect, transform.position + new Vector3(0, 5, 0), transform.rotation);
         gameObject.SetActive(false);
     }
+
+    private void ResetPosition()
+    {
+        transform.localPosition = originalPosition;
+    }
+    #endregion
 
     #region Collision Collider Behavior
 
@@ -77,6 +86,19 @@ public class FacesMove : MonoBehaviour
             engaged = false;
             animator.SetBool("Engaged", false);
         }
+    }
+    #endregion
+
+    #region OnEnable and OnDisable
+
+    private void OnEnable()
+    {
+        GameManager.LevelRestarted += ResetPosition;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.LevelRestarted -= ResetPosition;
     }
     #endregion
 }
