@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [Header("For Jumping")]
     [SerializeField] private LayerMask platformLayerMask;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float fallMultiplier;
     [HideInInspector] public bool isJumping;
 
     [Header("General Components")]
@@ -33,6 +34,14 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         Move();
+    }
+    private void FixedUpdate()
+    {
+        // When falling after jumping, fall faster
+        if (isJumping && playerRb.velocity.y < 0)
+        {
+            playerRb.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
+        }
     }
 
     // To handle player walking
