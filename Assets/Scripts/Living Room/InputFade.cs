@@ -11,6 +11,7 @@ public class InputFade : MonoBehaviour
 {
     private enum Behavior {FadeIn, FadeOut, Both};
     private SpriteRenderer spriteRenderer;
+    private Action<InputAction.CallbackContext> fadeTrigger;
 
     [SerializeField] InputActionReference triggerEvent;
     [SerializeField] Behavior behavior;
@@ -20,10 +21,20 @@ public class InputFade : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    private void Awake()
+    {
+        fadeTrigger = (ctx) => triggeredFade();
+    }
 
     private void OnEnable()
     {
-        triggerEvent.action.performed += ctx => triggeredFade();
+        triggerEvent.action.performed += fadeTrigger;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        triggerEvent.action.performed -= fadeTrigger;
     }
 
     private void triggeredFade()
