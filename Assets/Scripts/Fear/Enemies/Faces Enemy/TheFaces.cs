@@ -106,35 +106,43 @@ public class TheFaces : MonoBehaviour
     // Face selection by player and its handling
     private void PlayerFaceSelection()
     {
-        if (faces[faceNumber] == patternFaces[correctSelection])
+        if(engaged)
         {
-            audioSource.PlayCorrectSelection();
-
-            // Stops all coroutines and resets flag
-            StopAllCoroutines();
-            faceBeingProcessed = false;
-
-            ResetFaces(0);
-
-            correctSelection++;
-            faceNumber = 0;
-
-            // If entire pattern is correct
-            if(correctSelection >= patternFaces.Count)
+            if (faces[faceNumber] == patternFaces[correctSelection])
             {
-                gameObject.transform.parent.gameObject.GetComponent<FacesMove>().FacesDeath();
+                audioSource.PlayCorrectSelection();
+
+                // Stops all coroutines and resets flag
+                StopAllCoroutines();
+                faceBeingProcessed = false;
+
+                ResetFaces(0);
+
+                correctSelection++;
+                faceNumber = 0;
+
+                // If entire pattern is correct
+                if (correctSelection >= patternFaces.Count)
+                {
+                    gameObject.transform.parent.gameObject.GetComponent<FacesMove>().FacesDeath();
+                }
+            }
+            else
+            {
+                audioSource.PlayWrongSelection();
+
+                ResetFaces(0);
+
+                //Reset counter so player has to reenter entire pattern
+                correctSelection = 0;
+                faceNumber = 0;
             }
         }
         else
         {
-            audioSource.PlayWrongSelection();
-
-            ResetFaces(0);
-            
-            //Reset counter so player has to reenter entire pattern
-            correctSelection = 0;
-            faceNumber = 0;
+            return;
         }
+
     }
 
     private void ResetFaces(int index)
