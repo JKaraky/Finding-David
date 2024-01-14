@@ -9,7 +9,7 @@ public class TVControl : MonoBehaviour
     [SerializeField] private AudioSource TvSound;
     [SerializeField] private ChangeLightColor TvLightController;
 
-    private bool TvOn = true;
+    public bool TvOn = true;
     private bool inDistance = false;
 
     #endregion

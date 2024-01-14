@@ -1058,43 +1058,14 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9266412, y: 6.361282}
   m_EdgeRadius: 0
---- !u!320 &1909174586202515381
-PlayableDirector:
+--- !u!81 &4547284943460284786
+AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132753440624920314}
   m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -3407363321965586594, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -2678027904747354608, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8254735078646331948, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1791429709814049020, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -7589060181899697315, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -7051240305486815297, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 3506316026164095827, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -2646104588099421788, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5992637718847143080, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -4214495805314710043, guid: d0ec3c7d19e8b9248aafecdcfe79482a, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!95 &1909174586202515379
 Animator:
   serializedVersion: 5
@@ -1129,22 +1100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedJump: 0
---- !u!114 &1909174586202515382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132753440624920314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 698359bce001b584c8fc3c3b5ca7c6dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newScene: Fear
-  director: {fileID: 0}
-  nextSceneTrigger: {fileID: -3415952541422635201, guid: 804fd48538a7be84ba214c0e935e178e, type: 3}
-  triggerName: TransitionTrigger
 --- !u!114 &3461316183457471907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,16 +1190,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpForce: 6
+  fallMultiplier: 0
   isJumping: 0
   playerInput: {fileID: 0}
---- !u!81 &4547284943460284786
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132753440624920314}
-  m_Enabled: 1
 --- !u!4 &2182769844734345424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8920503104429021289, guid: 018390e130f5be648a1685b2dfbaabc6, type: 3}

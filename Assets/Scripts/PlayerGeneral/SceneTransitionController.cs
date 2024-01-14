@@ -12,8 +12,6 @@ public class SceneTransitionController : MonoBehaviour
     private PlayableDirector director;
     [SerializeField]
     private InputActionReference nextSceneTrigger;
-    [SerializeField]
-    private string triggerName = "TransitionTrigger";
 
     private LevelTransition transitionor;
     // transitionor to control if we want to trigger a timeline or quickly jump to a new scene
@@ -37,19 +35,20 @@ public class SceneTransitionController : MonoBehaviour
     {
         transitionor.GoToNextScene();
     }
-    // Subscribing and unsubscribing from the trigger button so we only change scenes when in the trigger area
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(triggerName))
+        if (collision.CompareTag("Player"))
         {
-            nextSceneTrigger.action.performed += ctx => GoToNextScene();
+            PlayerInput.Interacted += GoToNextScene;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(triggerName))
+        if (collision.CompareTag("Player"))
         {
-            nextSceneTrigger.action.performed -= ctx => GoToNextScene();
+            PlayerInput.Interacted -= GoToNextScene;
         }
     }
 }
