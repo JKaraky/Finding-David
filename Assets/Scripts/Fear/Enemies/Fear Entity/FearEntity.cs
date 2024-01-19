@@ -10,6 +10,7 @@ public class FearEntity : MonoBehaviour
 
     [SerializeField] FearGameManager gameManager;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject entityToMove;
     [SerializeField] GameObject entityGoal;
 
     [SerializeField] float distanceFromPlayer;
@@ -17,10 +18,12 @@ public class FearEntity : MonoBehaviour
 
     float variableSpeed;
     int playerFollowOrPlat;
+    bool entityCanMove;
 
     GameObject playerFollow;
     GameObject platformToBreak;
     PlayerClone playerCloneScript;
+    Vector3 currentRotation;
 
     public float VariableSpeed
     {
@@ -44,27 +47,39 @@ public class FearEntity : MonoBehaviour
     }
     void OnEnable()
     {
+        entityCanMove = true;
         // Determine whether entity will attack player or make a platform breakable (0 for player, 1 for platform)
         playerFollowOrPlat = UnityEngine.Random.Range(0, 2);
 
         DetermineEntityTask(playerFollowOrPlat);
 
         variableSpeed = fixedSpeed;
+        // Getting rotation of entity
+        currentRotation = transform.rotation.eulerAngles;
 
-        if(player.transform.localScale.x > 0)
+        if (player.transform.localScale.x > 0)
         {
-            transform.position = entityGoal.transform.position - new Vector3(distanceFromPlayer, 0, 0);
+            entityToMove.transform.position = entityGoal.transform.position - new Vector3(distanceFromPlayer, 0, 0);
+            // Flipping entity
+            currentRotation.y = 0f;
+            transform.rotation = Quaternion.Euler(currentRotation);
         }
         else
         {
-            transform.position = entityGoal.transform.position + new Vector3(distanceFromPlayer, 0, 0);
+            entityToMove.transform.position = entityGoal.transform.position + new Vector3(distanceFromPlayer, 0, 0);
+            // Flipping it back
+            currentRotation.y = 180f;
+            transform.rotation = Quaternion.Euler(currentRotation);
         }
     }
 
     void Update()
     {
-        float step = variableSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, entityGoal.transform.position, step);
+        if (entityCanMove)
+        {
+            float step = variableSpeed * Time.deltaTime;
+            entityToMove.transform.position = Vector3.MoveTowards(entityToMove.transform.position, entityGoal.transform.position, step);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,9 +87,14 @@ public class FearEntity : MonoBehaviour
         if (collision.CompareTag("EntityGoal"))
         {
             ReachedGoal?.Invoke();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
-        else if (collision.gameObject.layer == 8) // Hits a platform
+        // Entity stops moving when it's within a certain distance of the player so it can catch him
+        else if (collision.CompareTag("StopEntityTrigger"))
+        {
+            entityCanMove = false;
+        }
+        else if (playerFollowOrPlat==1 && collision.gameObject.layer == 8) // Hits a platform
         {
             gameObject.SetActive(false);
             collision.gameObject.AddComponent<PlatBreak>();
@@ -83,11 +103,11 @@ public class FearEntity : MonoBehaviour
 
     private void DetermineEntityTask(int toggle)
     {
-        if (playerFollowOrPlat == 0)
+        if (toggle == 0)
         {
             entityGoal = playerFollow;
 
-            playerCloneScript.enabled = true; // Follow player 
+            //playerCloneScript.enabled = true; // Follow player 
         }
         else
         {

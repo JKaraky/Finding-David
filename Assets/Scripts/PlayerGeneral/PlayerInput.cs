@@ -14,6 +14,8 @@ public class PlayerInput : MonoBehaviour
 
     // To store horizontal movement
     private float _xMovement;
+    private Action<InputAction.CallbackContext> spaceButtonTrigger;
+    private Action<InputAction.CallbackContext> enterTrigger;
     public float XMovement
     {
         get
@@ -55,13 +57,18 @@ public class PlayerInput : MonoBehaviour
     #region Subscribtion to events
     private void OnEnable()
     {
-        jumpAction.action.performed += ctx => SpaceButtonPressed();
-        interact.action.performed += ctx => EnterPressed();
+        jumpAction.action.performed += spaceButtonTrigger;
+        interact.action.performed += enterTrigger;
     }
     private void OnDisable()
     {
-        jumpAction.action.performed -= ctx => SpaceButtonPressed();
-        interact.action.performed -= ctx => EnterPressed();
+        jumpAction.action.performed -= spaceButtonTrigger;
+        interact.action.performed -= enterTrigger;
+    }
+    private void Awake()
+    {
+        spaceButtonTrigger = (ctx) => SpaceButtonPressed();
+        enterTrigger = (ctx) => EnterPressed();
     }
 
     #endregion

@@ -20,11 +20,11 @@ public class FearGameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        FearEntity.ReachedGoal += RestartLevel;
+        EntityAnimation.GameOver += RestartLevel;
     }
 
     private void OnDisable()
     {
-        FearEntity.ReachedGoal -= RestartLevel;
+        EntityAnimation.GameOver -= RestartLevel;
     }
 }
