@@ -18,12 +18,10 @@ public class CutsceneManager : MonoBehaviour
             gaveUp = PlayerPrefs.GetInt("GiveUpTrans");
         if (gaveUp == 0)
         {
-            Debug.Log("Scene 1");
             startingCutscene.Play();
         }
         else
         {
-            Debug.Log("Player gave up scene");
             gaveUpCutscene.Play();
         }
     }

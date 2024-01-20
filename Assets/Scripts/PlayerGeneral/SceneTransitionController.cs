@@ -51,4 +51,9 @@ public class SceneTransitionController : MonoBehaviour
             PlayerInput.Interacted -= GoToNextScene;
         }
     }
+
+    private void OnDisable()
+    {
+        PlayerInput.Interacted -= GoToNextScene;
+    }
 }

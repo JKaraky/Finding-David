@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 39.55
+    m_Start: 39.68333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 4486174901171360514}
     m_Duration: 0.3166666666666629
@@ -803,7 +803,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 39.63333333333333
+    m_Start: 39.76666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -8094879957045742138}
     m_Duration: 0.23333333333332718
@@ -874,23 +874,6 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_PostPlaybackState: 3
---- !u!114 &-4589629824114047914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
-  m_Name: AudioPlayableAsset(Clone)
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: f1c3fe996b97254489ef36bb40368a6b, type: 3}
-  m_Loop: 0
-  m_bufferingTime: 0.1
-  m_ClipProperties:
-    volume: 0.2
 --- !u!114 &-4359415691376405404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1282,6 +1265,23 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-4172646570702281058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 8300000, guid: 7e80dd60b701d0e4e867aced65ef6f03, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 0.2
 --- !u!114 &-3407363321965586594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 39.55
+    m_Start: 39.68333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 1584578054937931747}
     m_Duration: 0.3166666666666629
@@ -1860,11 +1860,11 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -4589629824114047914}
-    m_Duration: 39.78333333333333
+    m_Asset: {fileID: -4172646570702281058}
+    m_Duration: 40
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3506316026164095827}
-    m_EaseInDuration: 35
+    m_EaseInDuration: 36.38
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
@@ -1925,7 +1925,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: TVMusic
+    m_DisplayName: House
   m_Markers:
     m_Objects: []
   m_TrackProperties:
